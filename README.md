@@ -82,7 +82,7 @@ class TijdTracker{
     
     public static void main(String args[])throws IOException, InterruptedException {
         int i=0;
-        while (i<99){
+        while (i<999){
     
         TicketStempel ticket1 = new TicketStempel();
         
