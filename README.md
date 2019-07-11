@@ -80,7 +80,7 @@ class WriteFile{
 
 class TijdTracker{
     
-public static void main(String args[])throws IOException, InterruptedException {
+    public static void main(String args[])throws IOException, InterruptedException {
         
     
         TicketStempel ticket1 = new TicketStempel();
