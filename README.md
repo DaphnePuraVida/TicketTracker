@@ -12,6 +12,7 @@ class TicketStempel{
     private long endTime;
     private int ticketNummer;
     private String behandelaar;
+private int redenTicket;
     
     public void setBehandelaar(String behandelaar){
         this.behandelaar = behandelaar;
@@ -29,6 +30,14 @@ class TicketStempel{
         return ticketNummer;
     }
     
+    public void setRedenTicket(int redenTicket){
+        this.redenTicket = redenTicket;
+    }
+    
+    public int getRedenTicket(){
+        return redenTicket;
+    }
+        
     public void tijdStempelStart(long startTime){
         this.startTime = startTime;
         Timestamp startTijd = new Timestamp(startTime);
@@ -39,12 +48,15 @@ class TicketStempel{
         this.endTime = endTime;
         Timestamp eindTijd = new Timestamp(endTime);
         long timeSpent = this.endTime - startTime;
-        System.out.println("Eindtijd ticket is: " + eindTijd);   
+        System.out.println("Eindtijd ticket is: " + eindTijd);
+//        long totalTimeSpent=timeSpent++;
+//        System.out.println("Cum tijd =: " + totalTimeSpent);
     }
     
     public double getTimeSpent(){
         return (endTime - startTime) / 1000.0 / 60.0;
     }
+    
     
 }
 
@@ -70,7 +82,9 @@ class WriteFile{
         
         print_line.printf( "%s" + "%n" , "Ticketnummer: " + stempel.getTicketNummer());
         print_line.printf( "%s" + "%n" , "Behandelaar: " + stempel.getBehandelaar());
+        print_line.printf( "%s" + "%n" , "Kanaal: " + stempel.getRedenTicket());
         print_line.printf( "%s" + "%n" , "Tijd in minuten: " + stempel.getTimeSpent());
+        print_line.printf( "%s" + "%n" , "Cummulatieve tijd: "); //+ stempel.getTimeSpent());
         print_line.println(" ");
    
         print_line.close();
@@ -81,6 +95,7 @@ class WriteFile{
 class TijdTracker{
     
     public static void main(String args[])throws IOException, InterruptedException {
+        
         int i=0;
         while (i<999){
     
@@ -98,6 +113,10 @@ class TijdTracker{
         Scanner keyboard2 = new Scanner(System.in);
         String userName=keyboard2.nextLine();
         ticket1.setBehandelaar(userName);
+        System.out.println( "Hoe is de ticket binnengekomen? Kies 1 voor Mail, 2 voor Telefoon en 3 voor Software:");
+        int redenTicket = keyboard.nextInt();
+        
+        
         System.out.println();
         
         //Hier eindigt de meting
@@ -109,13 +128,31 @@ class TijdTracker{
         System.out.println();
         System.out.println("Het ticketnummer is:" + ticket1.getTicketNummer());
         System.out.println("Opgepakt door: " + ticket1.getBehandelaar());
+        System.out.printf("Binnengekomen via: " + redenTicket);
+             		
+            switch(redenTicket){
+                case 1: 
+                    System.out.println(" Telefoon ");
+                    break;
+                case 2: 
+                    System.out.println(" Mail ");
+                    break;
+                case 3:
+                    System.out.println(" Software ");
+                    break;
+                default:
+                    System.out.println(" Overig");
+                    break;
+            }       
         System.out.println("Gerapporteerde tijd in minuten: " + ticket1.getTimeSpent());
-        System.out.println();
+        System.out.println("Cummulatieve tijd: ");
         
         //Hier worden de gegevens weggeschreven naar een textbestand
         WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\time.txt", true);
         writeToFile.writeToFile(ticket1);
         
-     }
+        }
     }
 }
+
+
