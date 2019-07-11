@@ -81,7 +81,8 @@ class WriteFile{
 class TijdTracker{
     
     public static void main(String args[])throws IOException, InterruptedException {
-        
+        int i=0;
+        while (i<99){
     
         TicketStempel ticket1 = new TicketStempel();
         
@@ -116,5 +117,5 @@ class TijdTracker{
         writeToFile.writeToFile(ticket1);
         
      }
-  
+    }
 }
