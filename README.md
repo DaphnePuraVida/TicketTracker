@@ -1,17 +1,16 @@
 # TicketTracker
 Eindopdracht NCOI
 
-import java.util.Date;
 import java.sql.Timestamp;
 import java.util.Scanner;
 import java.io.*;
 
 
-class TijdStempel{
+class TicketStempel{
 
     private long startTime;
     private long endTime;
-    private int  ticketNumber;
+    private int ticketNummer;
     private String behandelaar;
     
     public void setBehandelaar(String behandelaar){
@@ -22,12 +21,12 @@ class TijdStempel{
         return behandelaar;
     }
     
-    public void setTicketNumber(int ticketNumber) {
-        this.ticketNumber = ticketNumber;
+    public void setTicketNummer(int ticketNummer) {
+        this.ticketNummer = ticketNummer;
     }
     
-    public int getTicketNumber(){
-        return ticketNumber;
+    public int getTicketNummer(){
+        return ticketNummer;
     }
     
     public void tijdStempelStart(long startTime){
@@ -63,15 +62,16 @@ class WriteFile{
         append_to_file = append_value;
     }
     
-    public void writeToFile(TijdStempel stempel) throws IOException {
+    public void writeToFile(TicketStempel stempel) throws IOException {
         
         
         FileWriter write = new FileWriter( path , append_to_file);
         PrintWriter print_line = new PrintWriter( write );
         
-        print_line.printf( "%s" + "%n" , "Ticket nummer: " + stempel.getTicketNumber());
-     print_line.printf( "%s" + "%n" , "behandelaar: " + stempel.getBehandelaar());
-     print_line.printf( "%s" + "%n" , "tijd in minuten: " + stempel.getTimeSpent());
+        print_line.printf( "%s" + "%n" , "Ticketnummer: " + stempel.getTicketNummer());
+        print_line.printf( "%s" + "%n" , "Behandelaar: " + stempel.getBehandelaar());
+        print_line.printf( "%s" + "%n" , "Tijd in minuten: " + stempel.getTimeSpent());
+        print_line.println(" ");
    
         print_line.close();
     }
@@ -83,26 +83,36 @@ class TijdTracker{
 public static void main(String args[])throws IOException, InterruptedException {
         
     
-        TijdStempel ticket1 = new TijdStempel();
+        TicketStempel ticket1 = new TicketStempel();
         
+        System.out.println();
         ticket1.tijdStempelStart(System.currentTimeMillis());
-         
+        // Hier start de tijdmeting 
+        System.out.println();
+        
         Scanner keyboard = new Scanner(System.in);
-
         System.out.println( "Voer het ticketnummer in (Alleen hele nummers):");
-        ticket1.setTicketNumber(keyboard.nextInt());
+        ticket1.setTicketNummer(keyboard.nextInt());
         System.out.println("Wie is de behandelaar(voer naam in):");
         Scanner keyboard2 = new Scanner(System.in);
         String userName=keyboard2.nextLine();
         ticket1.setBehandelaar(userName);
         System.out.println();
-                     
+        
+        //Hier eindigt de meting
         ticket1.tijdStempelEind(System.currentTimeMillis());
-        System.out.println("Het ticketnummer is:" + ticket1.getTicketNumber());
+        System.out.println();
+        
+        //Een samenvatting van de gegevens
+        System.out.println("Samenvatting:");
+        System.out.println();
+        System.out.println("Het ticketnummer is:" + ticket1.getTicketNummer());
         System.out.println("Opgepakt door: " + ticket1.getBehandelaar());
         System.out.println("Gerapporteerde tijd in minuten: " + ticket1.getTimeSpent());
-
-        WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\Desktop\\time.txt", true);
+        System.out.println();
+        
+        //Hier worden de gegevens weggeschreven naar een textbestand
+        WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\time.txt", true);
         writeToFile.writeToFile(ticket1);
         
      }
