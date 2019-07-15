@@ -13,6 +13,7 @@ class TicketStempel{
     private int ticketNummer;
     private String behandelaar;
     private int kanaalTicket;
+   
     
     public void setBehandelaar(String behandelaar){
         this.behandelaar = behandelaar;
@@ -114,7 +115,7 @@ class TijdTracker{
         String userName=keyboard2.nextLine();
         ticket1.setBehandelaar(userName);
         System.out.println( "Hoe is de ticket binnengekomen? Kies 1 voor Mail, 2 voor Telefoon en 3 voor Software:");
-        int redenTicket = keyboard.nextInt();
+        int kanaalTicket = keyboard.nextInt();
         
         
         System.out.println();
@@ -128,9 +129,9 @@ class TijdTracker{
         System.out.println();
         System.out.println("Het ticketnummer is:" + ticket1.getTicketNummer());
         System.out.println("Opgepakt door: " + ticket1.getBehandelaar());
-        System.out.printf("Binnengekomen via: " + redenTicket);
+        System.out.printf("Binnengekomen via: " + kanaalTicket);
              		
-            switch(redenTicket){
+            switch(kanaalTicket){
                 case 1: 
                     System.out.println(" Telefoon ");
                     break;
