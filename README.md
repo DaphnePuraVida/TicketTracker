@@ -147,14 +147,9 @@ class TijdTracker{
         
         double spend = ticket1.getTimeSpent()+ totalTimeSpent;
         System.out.println("Gerapporteerde tijd in minuten: " + ticket1.getTimeSpent());
-        System.out.println("Cummulatieve tijd: "+ spend);
+        System.out.println("Totale tijd = "+ spend + " minuten");
         totalTimeSpent = spend;
-
-
-                
-                
-
-        
+      
         //Hier worden de gegevens weggeschreven naar een textbestand
         WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\time.txt", true);
         writeToFile.writeToFile(ticket1);
@@ -162,4 +157,3 @@ class TijdTracker{
         }
     }
 }
-
