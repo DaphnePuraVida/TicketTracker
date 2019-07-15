@@ -49,8 +49,7 @@ class TicketStempel{
         Timestamp eindTijd = new Timestamp(endTime);
         long timeSpent = this.endTime - startTime;
         System.out.println("Eindtijd ticket is: " + eindTijd);
-//        long totalTimeSpent=timeSpent++;
-//        System.out.println("Cum tijd =: " + totalTimeSpent);
+        
     }
     
     public double getTimeSpent(){
@@ -97,6 +96,7 @@ class TijdTracker{
     public static void main(String args[])throws IOException, InterruptedException {
         
         int i=0;
+        double totalTimeSpent = 0;
         while (i<999){
     
         TicketStempel ticket1 = new TicketStempel();
@@ -144,8 +144,16 @@ class TijdTracker{
                     System.out.println(" Overig");
                     break;
             }       
+        
+        double spend = ticket1.getTimeSpent()+ totalTimeSpent;
         System.out.println("Gerapporteerde tijd in minuten: " + ticket1.getTimeSpent());
-        System.out.println("Cummulatieve tijd: ");
+        System.out.println("Cummulatieve tijd: "+ spend);
+        totalTimeSpent = spend;
+
+
+                
+                
+
         
         //Hier worden de gegevens weggeschreven naar een textbestand
         WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\time.txt", true);
@@ -154,3 +162,4 @@ class TijdTracker{
         }
     }
 }
+
