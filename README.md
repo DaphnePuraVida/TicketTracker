@@ -157,7 +157,13 @@ class TijdTracker{
         WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\time.txt", true);
         writeToFile.writeToFile(ticket1);
         
-        System.out.println( "Druk op enter om een nieuwe ticket te starten.");
+        System.out.println("Toets enter om een nieuw ticket te starten.");
+        try
+        {
+            System.in.read();
+        }  
+        catch(Exception e)
+        {}  
         }
     }
 }
