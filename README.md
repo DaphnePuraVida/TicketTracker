@@ -6,6 +6,11 @@ import java.util.Scanner;
 import java.io.*;
 
 
+import java.sql.Timestamp;
+import java.util.Scanner;
+import java.io.*;
+
+
 class TicketStempel{
 
     private long startTime;
@@ -57,9 +62,9 @@ class TicketStempel{
     public double getTimeSpent(){
         return (endTime - startTime) / 1000.0 / 60.0;
     }
-    
-    
 }
+
+
 
 class WriteFile{
     
@@ -91,6 +96,8 @@ class WriteFile{
         print_line.close();
     }
 }
+
+
 
 
 class TijdTracker{
@@ -153,17 +160,27 @@ class TijdTracker{
         System.out.println("Totale tijd = "+ spent + " minuten");
         totalTimeSpent = spent;
       
-        //Hier worden de gegevens weggeschreven naar een textbestand
+        //Hier worden de gegevens weggeschreven naar een textbestand.
         WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\time.txt", true);
         writeToFile.writeToFile(ticket1);
         
+        //Hierna start een nieuw ticket.
+        nieuwTicket ticket2 = new nieuwTicket();
+        ticket2.startNieuwTicket();
+        
+        }
+    }
+}
+
+class nieuwTicket{
+
+    public void startNieuwTicket(){
         System.out.println("Toets enter om een nieuw ticket te starten.");
         try
         {
             System.in.read();
         }  
-        catch(Exception e)
+        catch(IOException e)
         {}  
-        }
-    }
+    }   
 }
