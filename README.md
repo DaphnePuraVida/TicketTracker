@@ -18,8 +18,7 @@ class TicketStempel{
     private int ticketNummer;
     private String behandelaar;
     private int kanaalTicket;
-    int getKanaalTicket;
-   
+       
     
     public void setBehandelaar(String behandelaar){
         this.behandelaar = behandelaar;
@@ -99,6 +98,20 @@ class WriteFile{
 
 
 
+class nieuwTicket{
+
+    public void startNieuwTicket(){
+        System.out.println("Toets enter om een nieuw ticket te starten.");
+        try
+        {
+            System.in.read();
+        }  
+        catch(IOException e)
+        {}  
+    }   
+}
+
+
 
 class TijdTracker{
     
@@ -172,15 +185,4 @@ class TijdTracker{
     }
 }
 
-class nieuwTicket{
 
-    public void startNieuwTicket(){
-        System.out.println("Toets enter om een nieuw ticket te starten.");
-        try
-        {
-            System.in.read();
-        }  
-        catch(IOException e)
-        {}  
-    }   
-}
