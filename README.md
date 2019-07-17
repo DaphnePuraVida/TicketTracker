@@ -6,18 +6,8 @@ import java.util.Scanner;
 import java.io.*;
 
 
-import java.sql.Timestamp;
-import java.util.Scanner;
-import java.io.*;
 
-
-import java.sql.Timestamp;
-import java.util.Scanner;
-import java.io.*;
-
-
-
-class TicketStempel{
+class TicketGegevens{
 
     private long startTime;
     private long endTime;
@@ -85,7 +75,7 @@ class WriteFile{
         append_to_file = append_value;
     }
     
-    public void writeToFile(TicketStempel stempel) throws IOException {
+    public void writeToFile(TicketGegevens stempel) throws IOException {
         
         
         FileWriter write = new FileWriter( path , append_to_file);
@@ -119,7 +109,7 @@ class nieuwTicket{
 
 
 
-class TijdTracker{
+class TicketTracker{
     
     public static void main(String args[])throws IOException, InterruptedException {
         
@@ -127,7 +117,7 @@ class TijdTracker{
         double totalTimeSpent = 0;
         while (i<999){
     
-        TicketStempel ticket1 = new TicketStempel();
+        TicketGegevens ticket1 = new TicketGegevens();
         
         System.out.println();
         ticket1.tijdStempelStart(System.currentTimeMillis());
@@ -190,4 +180,3 @@ class TijdTracker{
         }
     }
 }
-
