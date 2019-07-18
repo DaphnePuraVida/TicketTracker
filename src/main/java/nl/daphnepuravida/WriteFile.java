@@ -23,9 +23,13 @@ class WriteFile {
 		FileWriter write = new FileWriter(path, append_to_file);
 		PrintWriter print_line = new PrintWriter(write);
 
-		print_line.printf("%s" + "%n", "Ticketnummer: " + stempel.getTicketNummer());
-		print_line.printf("%s" + "%n", "Behandelaar: " + stempel.getBehandelaar());
-		print_line.printf("%s" + "%n", "Tijd in minuten: " + stempel.getTimeSpent());
+		// Een samenvatting van de gegevens
+		print_line.printf("%s" + "%n", "Samenvatting:");
+				
+		print_line.printf("%s" + "%n", "Het ticketnummer is:" + stempel.getTicketNummer());
+		print_line.printf("%s" + "%n", "Opgepakt door: " + stempel.getBehandelaar());
+		print_line.printf("%s" + "%n", "Gerapporteerde tijd in minuten: " + stempel.getTimeSpent());
+	
 		print_line.println(" ");
 		print_line.close();
 	}

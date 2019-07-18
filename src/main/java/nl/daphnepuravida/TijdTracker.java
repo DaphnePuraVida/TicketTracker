@@ -36,7 +36,9 @@ class TijdTracker {
 		System.out.println();
 
 		// Hier worden de gegevens weggeschreven naar een textbestand
-		WriteFile writeToFile = new WriteFile("C:\\Users\\Laptop\\time.txt", true);
+		//./time.txt zorgt dat het in de directory vanuit waar het programma gedraaid wordt
+		//een bestand komt
+		WriteFile writeToFile = new WriteFile("./time.txt", true);
 		writeToFile.writeToFile(ticket1);
 
 	}
