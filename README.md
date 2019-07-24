@@ -66,10 +66,6 @@ class WriteFile{
     private String path;
     private boolean appendToFile = false;
 
-    public WriteFile(String filePath) {
-        path = filePath;
-    }
-
     public WriteFile( String filePath , boolean appendValue) {
         path = filePath;
         appendToFile = appendValue;
